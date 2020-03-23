@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class ManagerFunction {
 	public List<Employee> listEmployee = new ArrayList<>();
+	Scanner sc = new Scanner(System.in);
 
 	public ManagerFunction() {
 		// TODO Auto-generated constructor stub
@@ -43,9 +44,12 @@ public class ManagerFunction {
 		for (int i = 0; i < listEmployee.size(); i++) {
 			if (listEmployee.get(i).getMid() == id) {
 				isExisted = true;
-				listEmployee.get(i).setmName(employee.mName);
-				listEmployee.get(i).setmDateOfBirth(employee.mDateOfBirth);
-				listEmployee.get(i).setmSalary(employee.mSalary);
+				System.out.println("Employee's Information");
+				listEmployee.get(i).showInfor();
+				System.out.println("Update");
+				FullTime fullTime = new FullTime();
+				fullTime.input(sc);
+				listEmployee.set(i, fullTime);
 				break;
 			}
 		}

@@ -43,6 +43,11 @@ public class PartTime extends Employee {
 
 	@Override
 	public void showInfor() {
+		System.out.println("----- INFORMATION OF A Employee --------");
+		System.out.println("ID: " + this.mid);
+		System.out.println("NAME: " + this.mName);
+		System.out.println("DateOfBirth: " + this.mDateOfBirth);
+		System.out.println("Salary: " + this.getmSalary());
 		System.out.println("PartTime of WorkDay: " + this.mWorkDay);
 		RealIncome();
 	}
