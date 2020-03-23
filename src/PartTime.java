@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class PartTime extends Employee {
 	public static int mWorkDay;
-	public int b;
+	public int realIncome;
 
-	public int getB() {
-		return b;
+	public int getRealIncome() {
+		return realIncome;
 	}
 
-	public void setB(int b) {
-		this.b = b;
+	public void setRealIncome(int realIncome) {
+		this.realIncome = realIncome;
 	}
 
 	public static int getmWorkDay() {
@@ -31,15 +31,14 @@ public class PartTime extends Employee {
 	}
 
 	public void RealIncome() {
-		b = mWorkDay * 500000;
-		System.out.println("PartTime of RealIncome :" + b);
+		realIncome = mWorkDay * 500000;
+		System.out.println("PartTime of RealIncome :" + realIncome);
 	}
 
 	@Override
 	public int getSalary() {
 		return mSalary;
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class FullTime extends Employee {
 	public static int mWorkDay;
-	public int a;
+	public int realIncome;
 
-	public int getA() {
-		return a;
+	public int getRealIncome() {
+		return realIncome;
 	}
 
-	public void setA(int a) {
-		this.a = a;
+	public void setRealIncome(int realIncome) {
+		this.realIncome = realIncome;
 	}
 
 	public int getmWorkDay() {
@@ -36,8 +36,8 @@ public class FullTime extends Employee {
 	}
 
 	public void RealIncome() {
-		a = (mWorkDay * 1200000) + 800000;
-		System.out.println("FullTime of RealIncome :" + a);
+		realIncome = (mWorkDay * 1200000) + 800000;
+		System.out.println("FullTime of RealIncome :" + realIncome);
 	}
 
 	@Override
@@ -49,7 +49,6 @@ public class FullTime extends Employee {
 		System.out.println("Salary: " + this.getmSalary());
 		System.out.println("FullTime of WorkDay: " + this.mWorkDay);
 		RealIncome();
-
 	}
 
 }

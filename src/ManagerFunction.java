@@ -21,21 +21,54 @@ public class ManagerFunction {
 		System.out.println("3. Update or edit  of an employee by Id ");
 		System.out.println("4. Delete of an employee by Id ");
 		System.out.println("5. Show total salary  ");
-		System.out.println("5. Displaying an alphabetical list  ");
-		System.out.println("6. Exit");
+		System.out.println("6. Displaying an alphabetical list  ");
+		System.out.println("7. Exit");
 	}
 
 	public void add(Scanner sc) {
 		FullTime fullTime = new FullTime();
 		fullTime.input(sc);
 		listEmployee.add(fullTime);
-
 	}
 
 	public void showListPerson() {
 		for (int i = 0; i < listEmployee.size(); i++) {
 			System.out.println("=== Information Employee " + (i + 1) + " ===");
 			listEmployee.get(i).showInfor();
+		}
+	}
+
+	public void UpdateEmployeeById(int id) {
+		boolean isExisted = false;
+		for (int i = 0; i < listEmployee.size(); i++) {
+			if (listEmployee.get(i).getMid() == id) {
+				isExisted = true;
+				listEmployee.get(i).setmName(employee.mName);
+				listEmployee.get(i).setmDateOfBirth(employee.mDateOfBirth);
+				listEmployee.get(i).setmSalary(employee.mSalary);
+				break;
+			}
+		}
+		if (!isExisted) {
+			System.out.println("Id not existed. !!!");
+		} else {
+			System.out.println("Update Employee Complete...!!!");
+		}
+	}
+
+	public void DeleteEmployeeById(int id) {
+		Employee e = null;
+		for (int i = 0; i < listEmployee.size(); i++) {
+			if (listEmployee.get(i).getMid() == id) {
+				e = listEmployee.get(i);
+				break;
+			}
+		}
+		if (e != null) {
+			listEmployee.remove(e);
+
+		} else {
+			System.out.println("Complete...!!!");
 		}
 	}
 
@@ -54,46 +87,56 @@ public class ManagerFunction {
 		for (Employee employee1 : listEmployee) {
 			total += employee1.getSalary();
 		}
-
 		System.out.println(" Total salary must paid :" + total);
+	}
+
+	public int inputId() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Input student id: ");
+		while (true) {
+			try {
+				int id = Integer.parseInt((sc.nextLine()));
+				return id;
+			} catch (NumberFormatException ex) {
+				System.out.print("invalid! Input student id again: ");
+			}
+		}
 	}
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ManagerFunction a = new ManagerFunction();
+		ManagerFunction manafun = new ManagerFunction();
+		int mid;
 		// initialization object
 		int option;
 		do {
-			a.initMenu(sc);
+			manafun.initMenu(sc);
 			option = sc.nextInt();
 			// switch case ste
 			switch (option) {
 			case 1:
-				a.add(sc);
+				manafun.add(sc);
 				break;
-
 			case 2:
-				a.showListPerson();
+				manafun.showListPerson();
 				break;
-
 			case 3:
-
+				mid = manafun.inputId();
+				manafun.UpdateEmployeeById(mid);
 				break;
 			case 4:
-
+				mid = manafun.inputId();
+				manafun.DeleteEmployeeById(mid);
 				break;
 			case 5:
-				a.getTotalSalaryOfAllEmployee();
+				manafun.getTotalSalaryOfAllEmployee();
 				break;
-
 			case 6:
-				a.SortName();
+				manafun.SortName();
 				break;
-
 			case 7:
 				System.exit(0);
 				break;
-
 			default:
 				// initMenu(sc);
 				break;
